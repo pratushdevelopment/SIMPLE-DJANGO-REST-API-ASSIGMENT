@@ -1,41 +1,86 @@
-# SIMPLE-DJANGO-REST-API-ASSIGMENT
+# Django REST API for Task Management
 
+This project implements a RESTful API for managing tasks using Django REST Framework. The API allows users to perform CRUD (Create, Read, Update, Delete) operations on tasks.
 
-Objective: Your task is to create a basic RESTful API using Django REST Framework. The API should allow users to perform CRUD (Create, Read, Update, Delete) operations on a resource named "Tasks." 
+## Getting Started
 
-Requirements:
+To set up and run the project locally, follow these steps:
 
-Models:
+1. Clone the repository:
 
-Create a Task model with the following fields:
-Title
-Description (text field)
-Due date
-Status (choices: "To Do", "In Progress", "Done")
-API Endpoints: Create the following API endpoints using Django REST Framework's ModelViewSet:
+   ```bash
+   git clone https://github.com/pratushdevelopment/SIMPLE-DJANGO-REST-API-ASSIGMENT.git
+   ```
 
-List all tasks.
-Retrieve a single task by ID.
-Create a new task.
-Update an existing task.
-Delete a task.
-Serializers:
+2. Navigate to the project directory:
 
-Create a serializer to convert the Task model into JSON format for API responses and request data.
-Functionality:
+   ```bash
+   cd SIMPLE-DJANGO-REST-API-ASSIGMENT/taskapi
+   ```
 
-Implement proper error handling for cases such as invalid data submissions or non-existent tasks.
-Add appropriate authentication (e.g., token-based authentication) to protect the API.
-Optional Enhancements (if time allows):
+3. Install the required dependencies:
 
-Add filtering and sorting options to the API for tasks.
-Implement pagination for the list of tasks.
-Create a user authentication system and associate tasks with specific users.
-Instructions:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Fork or clone this GitHub repository: Simple Django REST API Assignment.
-Create a new Django project within the repository.
-Develop the required models, serializers, views, and functionality as per the requirements.
-Implement proper URL routing for the API endpoints.
-Implement authentication mechanisms as needed.
+4. Migrate the database:
 
+   ```bash
+   python manage.py migrate
+   ```
+
+5. (Optional) Create a superuser for admin access:
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. Run the development server:
+
+   ```bash
+   python manage.py runserver
+   ```
+
+7. Access the API at [http://localhost:8000/api/tasks/](http://localhost:8000/api/tasks/).
+
+## API Endpoints
+
+- List all tasks: `/api/tasks/` (GET)
+- Retrieve a single task by ID: `/api/tasks/<task_id>/` (GET)
+- Create a new task: `/api/tasks/` (POST)
+- Update an existing task: `/api/tasks/<task_id>/` (PUT)
+- Delete a task: `/api/tasks/<task_id>/` (DELETE)
+
+## Authentication
+
+Token-based authentication is implemented to protect the API endpoints. To obtain an API token:
+
+1. Create a user or use the superuser created during setup.
+2. Authenticate and obtain a token by sending a POST request to `/api/token/`. Provide your username and password in the request body (see API documentation for details).
+
+Include the token in the `Authorization` header of your requests as `Bearer <token>`.
+
+## Error Handling
+
+The API includes proper error handling to manage cases such as invalid data submissions or non-existent tasks. You will receive appropriate error messages and status codes when issues occur.
+
+## Optional Enhancements
+
+- Filtering and Sorting: You can filter and sort tasks using query parameters in the API URL.
+- Pagination: The list of tasks is paginated to manage large datasets.
+- User Authentication: Tasks are associated with specific users.
+
+## Documentation
+
+For more detailed information, usage examples, and API documentation, refer to the [API Documentation](api_documentation.txt) provided in this repository.
+
+## Contributing
+
+Contributions to this project are welcome. If you'd like to contribute, please follow the standard GitHub fork and pull request process.
+
+## Acknowledgments
+
+- This project was built using [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/).
+- Special thanks to the [Django community](https://www.djangoproject.com/community/) for their excellent documentation and support.
+```
